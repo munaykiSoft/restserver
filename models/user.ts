@@ -8,20 +8,7 @@ const userSchema = new Schema({
     status: { type: Boolean, default: true },
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
-
-    name: { type: String, required: true }, 
-    last_name: { type: String, required: true, unique: true },
-    m_lastName: { type: String, required: true },
-    birthday: { type: Date, required: true },
-    gender: { type: String, required: true },
-    email: { type: String, required: true },
-    ubigeo: { type: String, required: true },
-    address: { type: String, required: true },
-    document_type: { type: String, required: true },
-    document: { type: String, required: true, unique: true },
-    createdAt: { type: Date, default: Date.now()},
-    updatedAt: { type: Date }
-});
+}, { timestamps: true } );
 
 userSchema.methods.toJSON = function() {
     let user = this;
@@ -37,19 +24,6 @@ interface IUser extends Document {
     status: string;
     token: string;
     expiration: Date;
-
-    name: string;
-    last_name: string;
-    m_lastName: string,
-    gender: string,
-    birthday: string,
-    email: string,
-    ubigeo: string,
-    address: string,
-    document_type: string;
-    document: string;
-    createdAt: Date;
-    updatedAt: Date;
 }
 
 export const User = model<IUser>('User', userSchema);

@@ -4,18 +4,9 @@ const courseSchema = new Schema({
     name: { type: String, unique: true, required: true, lowercase: true }, //Matematicas
     description: { type: String },
     image: { type: String },
-    type: { type: String }, // si o si cuando va ser secundaria  
-    level: { type: Schema.Types.ObjectId, ref: 'Level' },
-    institution: { type: Schema.Types.ObjectId, ref: 'Institution' },
-    section: { type: Schema.Types.ObjectId, ref: 'Section' },
-    teachers: [
-        {
-            teacher: { type: Schema.Types.ObjectId, ref: 'User' },
-        }
-    ],
-    updateAt: { type: Date },
-    createdAt: { type: Date, default: Date.now },
-});
+    teachers: [{ teacher: { type: Schema.Types.ObjectId, ref: 'Teacher' }}],
+    modules: [{ teacher: { type: Schema.Types.ObjectId, ref: 'Module' }}],
+},{ timestamps: true });
 
 
 interface ICourse extends Document {
