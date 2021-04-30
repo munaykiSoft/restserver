@@ -6,16 +6,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const connection_1 = __importDefault(require("../db/connection"));
+const user_1 = __importDefault(require("../routes/user"));
 class Server {
     constructor() {
+        this.apiPaths = {
+            users: '/api/users'
+        };
         this.app = express_1.default();
         this.port = process.env.PORT || '7000';
+        this.middlwares();
         connection_1.default();
+        this.routes();
     }
     middlwares() {
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.static('public'));
+    }
+    routes() {
+        this.app.use(this.apiPaths.users, user_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

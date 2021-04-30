@@ -6,9 +6,6 @@ const levelSchema = new mongoose_1.Schema({
     name: { type: String, unique: true, required: true, lowercase: true },
     order: { type: Number, required: true },
     description: { type: String },
-    institution: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Institution' },
-    updateAt: { type: Date },
-    createdAt: { type: Date, default: Date.now },
-});
+}, { timestamps: true });
 exports.Level = mongoose_1.model('Level', levelSchema);
 //# sourceMappingURL=level.js.map
