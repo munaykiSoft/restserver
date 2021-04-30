@@ -24,11 +24,7 @@ const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = new user_1.User(req.body);
         yield user.save();
-        console.log(user);
-        res.json({
-            ok: true,
-            user: user
-        });
+        res.json(user);
     }
     catch (error) {
         console.log(error);

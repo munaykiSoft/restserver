@@ -11,10 +11,5 @@ const userSchema = new mongoose_1.Schema({
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
 }, { timestamps: true });
-userSchema.methods.toJSON = function () {
-    let user = this;
-    let userObject = user.toObject();
-    delete userObject.password;
-};
 exports.User = mongoose_1.model('User', userSchema);
 //# sourceMappingURL=user.js.map

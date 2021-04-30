@@ -10,11 +10,11 @@ const userSchema = new Schema({
     expiration: { type: Date, required: false },
 }, { timestamps: true } );
 
-userSchema.methods.toJSON = function() {
-    let user = this;
-    let userObject: any = user.toObject();
-    delete userObject.password;
-}
+// userSchema.methods.toJSON = function() {
+//     let user = this;
+//     let userObject: any = user.toObject();
+//     delete userObject.password;
+// }
 
 interface IUser extends Document {
     username: string;
