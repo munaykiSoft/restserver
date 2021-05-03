@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getSection } from '../models/section';
+import { Section } from '../models/section';
 
 
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getPeople } from '../models/people';
+import { People } from '../models/people';
 
 
 

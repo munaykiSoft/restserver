@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getInstitution } from '../models/institution';
+import { Institution } from '../models/institution';
 
 
 

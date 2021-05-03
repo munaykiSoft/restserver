@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getLevel } from '../models/level';
+import { Level } from '../models/level';
 
 
 

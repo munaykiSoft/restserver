@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getCourse } from '../models/course';
+import { Course } from '../models/course';
 
 
 

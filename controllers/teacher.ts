@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getTeacher } from '../models/teacher';
+import { Teacher } from '../models/teacher';
 
 
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getModule } from '../models/module';
+import { Module } from '../models/module';
 
 
 

@@ -11,8 +11,6 @@ interface ILevel extends Document {
     order: number;
     description: string;
     institution: string;
-    updateAt: Date;
-    createdAt: Date;
 }
 
 export const Level = model<ILevel>('Level', levelSchema);

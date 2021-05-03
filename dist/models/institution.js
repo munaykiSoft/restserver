@@ -4,7 +4,7 @@ exports.Institution = void 0;
 const mongoose_1 = require("mongoose");
 const institutionSchema = new mongoose_1.Schema({
     name: { type: String, unique: true, required: true, lowercase: true },
-    short_name: { type: String, lowercase: true },
+    shortName: { type: String, lowercase: true },
     description: { type: String },
     image: { type: String },
     address: { type: String },
