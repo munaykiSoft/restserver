@@ -8,7 +8,7 @@ const teacherSchema = new Schema({
         documentNumber: String
     },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User'},
-},{ timestamps: true });
+},{ timestamps: true, versionKey: false });
 
 
 interface ITeacher extends Document {

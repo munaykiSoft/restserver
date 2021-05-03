@@ -10,6 +10,6 @@ const teacherSchema = new mongoose_1.Schema({
         documentNumber: String
     },
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 exports.Teacher = mongoose_1.model('Teacher', teacherSchema);
 //# sourceMappingURL=teacher.js.map
