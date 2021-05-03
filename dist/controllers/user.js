@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postUser = exports.getUsers = void 0;
+exports.postUser = exports.getUser = void 0;
 const user_1 = require("../models/user");
-const getUsers = (req, res) => {
+const getUser = (req, res) => {
     console.log('hola mundo');
     // const { nombre = 'No name' } = req.query;
     res.json({
         msg: 'get API - controller',
     });
 };
-exports.getUsers = getUsers;
+exports.getUser = getUser;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // const { body } = req;
     try {

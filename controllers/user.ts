@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from '../models/user';
 
 
-export const getUsers =  (req: Request, res: Response) => {
+export const getUser =  (req: Request, res: Response) => {
 
     console.log('hola mundo');
     // const { nombre = 'No name' } = req.query;
