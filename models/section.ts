@@ -1,7 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 const sectionSchema = new Schema({
-    name: { type: String, required: true }, // Sección A
+    name: { type: String, required: true },
     description: { type: String },
     image: { type: String },
 }, { timestamps: true });

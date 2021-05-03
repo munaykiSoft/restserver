@@ -4,8 +4,10 @@ const courseSchema = new Schema({
     name: { type: String, unique: true, required: true, lowercase: true }, //Matematicas
     description: { type: String },
     image: { type: String },
-    teachers: [{ teacher: { type: Schema.Types.ObjectId, ref: 'Teacher' }}],
-    modules: [{ teacher: { type: Schema.Types.ObjectId, ref: 'Module' }}],
+    teachers: [{ idTeacher: { type: Schema.Types.ObjectId, ref: 'Teacher' }}],
+    modules: [{ idModule: { type: Schema.Types.ObjectId, ref: 'Module' }}],
+    idLevel: { type: Schema.Types.ObjectId, ref: 'Level' },
+    idSection: { type: Schema.Types.ObjectId, ref: 'Section' },
 },{ timestamps: true });
 
 
@@ -13,13 +15,10 @@ interface ICourse extends Document {
     name: string;
     description: string;
     image: string;
-    type: string;
-    level: string;
-    institution: string;
-    section: string;
-    teachers: any;
-    updateAt: Date;
-    createdAt: Date;
+    teachers: string;
+    modules: string;
+    idLevel: string;
+    idSection: any;
 }
 
 export const Course = model<ICourse>('Course', courseSchema);
