@@ -1,15 +1,15 @@
-/**
+/*
  * api/users
  */
 
 import { Router } from "express";
-import { postUser, getUsers } from '../controllers/user';
+import { postUser, getUser } from '../controllers/user';
 
 
 
 const router = Router();
 
-router.get('/', getUsers);
+router.get('/', getUser);
 
 // router.put('/:id', userPut);
 
