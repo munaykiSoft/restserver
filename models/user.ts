@@ -5,17 +5,25 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     image: { type: String },
     role: { type: String, required: true, default: 'USER' },
+    idTeacher: { type: String },
+    idStudent: { type: String },
+    people: {
+        name: String,
+        lastname: String,
+        dni: String,
+        email: String
+    },
     status: { type: Boolean, default: true },
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
 }, { timestamps: true } );
 
-// userSchema.methods.toJSON = function() {
-//     let user = this;
-//     let userObject: any = user.toObject();
-//     delete userObject.password;
-// }
-
+userSchema.methods.toJSON = function() {
+    let user:any = this;
+    const { __v, _id, password, ...object } = user.toObject();
+    object.uid = _id;
+    return object;
+}
 interface IUser extends Document {
     username: string;
     password: string;
