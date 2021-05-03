@@ -8,7 +8,7 @@ const courseSchema = new Schema({
     modules: [{ idModule: { type: Schema.Types.ObjectId, ref: 'Module' }}],
     idLevel: { type: Schema.Types.ObjectId, ref: 'Level' },
     idSection: { type: Schema.Types.ObjectId, ref: 'Section' },
-},{ timestamps: true });
+},{ timestamps: true, versionKey: false  });
 
 
 interface ICourse extends Document {

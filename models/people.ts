@@ -11,7 +11,7 @@ const peopleSchema = new Schema({
     documentType: { type: String, required: true, unique: true },
     documentNumber: { type: String, required: true, unique: true },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User'},
-},{ timestamps: true });
+},{ timestamps: true, versionKey: false  });
 
 
 interface IPeople extends Document {

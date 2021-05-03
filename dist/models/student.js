@@ -11,6 +11,6 @@ const studentSchema = new mongoose_1.Schema({
     },
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
     courses: [{ idCourse: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Course' } }],
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 exports.Student = mongoose_1.model('Student', studentSchema);
 //# sourceMappingURL=student.js.map

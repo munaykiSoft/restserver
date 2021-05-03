@@ -4,7 +4,7 @@ const sectionSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String },
     image: { type: String },
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false  });
 
 
 interface ISection extends Document {

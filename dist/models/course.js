@@ -10,6 +10,6 @@ const courseSchema = new mongoose_1.Schema({
     modules: [{ idModule: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Module' } }],
     idLevel: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Level' },
     idSection: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Section' },
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 exports.Course = mongoose_1.model('Course', courseSchema);
 //# sourceMappingURL=course.js.map

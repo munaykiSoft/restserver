@@ -9,7 +9,7 @@ const studentSchema = new Schema({
     },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User'},
     courses: [{ idCourse: { type: Schema.Types.ObjectId, ref: 'Course' }}],
-},{ timestamps: true });
+},{ timestamps: true, versionKey: false  });
 
 
 interface IStudent extends Document {

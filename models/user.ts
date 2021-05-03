@@ -16,7 +16,7 @@ const userSchema = new Schema({
     status: { type: Boolean, default: true },
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
-}, { timestamps: true } );
+}, { timestamps: true, versionKey: false  } );
 
 userSchema.methods.toJSON = function() {
     let user:any = this;

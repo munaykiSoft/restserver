@@ -7,7 +7,7 @@ const moduleSchema = new Schema({
         title: { type: String },
         description: { type: String },
     }, { timestamps: true }]
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false  });
 
 
 interface IModule extends Document {

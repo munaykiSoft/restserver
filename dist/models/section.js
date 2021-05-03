@@ -6,6 +6,6 @@ const sectionSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     description: { type: String },
     image: { type: String },
-}, { timestamps: true });
+}, { timestamps: true, versionKey: false });
 exports.Section = mongoose_1.model('Section', sectionSchema);
 //# sourceMappingURL=section.js.map
