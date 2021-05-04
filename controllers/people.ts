@@ -3,12 +3,36 @@ import { People } from '../models/people';
 
 
 
-export const getPeople =  (req: Request, res: Response) => {
+export const getPeople =  async(req: Request, res: Response) => {
 
-    console.log('hola mundo');
-    // const { nombre = 'No name' } = req.query;
+    try {
+        const peoples = await People.find({});
+        res.json(peoples)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'get API - controller',
+        });
+        
+    }
 
-    res.json({
-        msg: 'get API - controller',
-    });
+
 }
+
+
+export const postPeople = async (req: Request, res: Response) => {
+    const { body } = req;
+    try {
+        const people = new People(body);
+        await people.save();
+        res.json(people);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
+}
+
+

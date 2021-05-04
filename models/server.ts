@@ -3,13 +3,16 @@ import cors from "cors";
 import dbConnection from '../db/connection';
 import userRoutes from '../routes/user';
 import levelRoutes from '../routes/level';
+import peopleRoutes from '../routes/people';
+
 
 class Server {
     private app: Application;
     private port: string;
     private apiPaths = {
         users: '/api/users',
-        levels: '/api/levels'
+        levels: '/api/levels',
+        peoples: '/api/peoples',
     }
 
     constructor() {
@@ -30,6 +33,8 @@ class Server {
     routes() {
         this.app.use(this.apiPaths.users, userRoutes);
         this.app.use(this.apiPaths.levels, levelRoutes);
+        this.app.use(this.apiPaths.peoples, peopleRoutes);
+
     }
 
 

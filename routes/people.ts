@@ -1,11 +1,21 @@
 /*
-* api/users
+* api/peoples
 */
 
 import { Router } from 'express';
-import { getPeople } from '../controllers/people';
+import { getPeople, postPeople } from '../controllers/people';
 
 
 const router = Router ();
 
 router.get('/', getPeople);
+router.post('/new', postPeople);
+
+
+
+
+
+
+
+
+export default router;

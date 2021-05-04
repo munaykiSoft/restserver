@@ -1,1 +1,1 @@
-{"version":3,"file":"people.js","sourceRoot":"","sources":["../../routes/people.ts"],"names":[],"mappings":";AAAA;;EAEE;;AAEF,qCAAiC;AACjC,kDAAkD;AAGlD,MAAM,MAAM,GAAG,gBAAM,EAAG,CAAC;AAEzB,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,kBAAS,CAAC,CAAC"}
+{"version":3,"file":"people.js","sourceRoot":"","sources":["../../routes/people.ts"],"names":[],"mappings":";AAAA;;EAEE;;AAEF,qCAAiC;AACjC,kDAA8D;AAG9D,MAAM,MAAM,GAAG,gBAAM,EAAG,CAAC;AAEzB,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,kBAAS,CAAC,CAAC;AAC3B,MAAM,CAAC,IAAI,CAAC,MAAM,EAAE,mBAAU,CAAC,CAAC;AAShC,kBAAe,MAAM,CAAC"}
