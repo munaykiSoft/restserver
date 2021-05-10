@@ -7,4 +7,6 @@ const express_1 = require("express");
 const teacher_1 = require("../controllers/teacher");
 const router = express_1.Router();
 router.get('/', teacher_1.getTeacher);
+router.post('/new', teacher_1.postTeacher);
+exports.default = router;
 //# sourceMappingURL=teacher.js.map

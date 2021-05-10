@@ -9,12 +9,14 @@ const connection_1 = __importDefault(require("../db/connection"));
 const user_1 = __importDefault(require("../routes/user"));
 const level_1 = __importDefault(require("../routes/level"));
 const people_1 = __importDefault(require("../routes/people"));
+const teacher_1 = __importDefault(require("../routes/teacher"));
 class Server {
     constructor() {
         this.apiPaths = {
             users: '/api/users',
             levels: '/api/levels',
             peoples: '/api/peoples',
+            teacher: '/api/teachers'
         };
         this.app = express_1.default();
         this.port = process.env.PORT || '7000';
@@ -31,6 +33,7 @@ class Server {
         this.app.use(this.apiPaths.users, user_1.default);
         this.app.use(this.apiPaths.levels, level_1.default);
         this.app.use(this.apiPaths.peoples, people_1.default);
+        this.app.use(this.apiPaths.teacher, teacher_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

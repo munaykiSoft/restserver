@@ -4,6 +4,8 @@ import dbConnection from '../db/connection';
 import userRoutes from '../routes/user';
 import levelRoutes from '../routes/level';
 import peopleRoutes from '../routes/people';
+import teacherRoutes from '../routes/teacher';
+
 
 
 class Server {
@@ -13,6 +15,8 @@ class Server {
         users: '/api/users',
         levels: '/api/levels',
         peoples: '/api/peoples',
+        teacher: '/api/teachers'
+        
     }
 
     constructor() {
@@ -34,6 +38,7 @@ class Server {
         this.app.use(this.apiPaths.users, userRoutes);
         this.app.use(this.apiPaths.levels, levelRoutes);
         this.app.use(this.apiPaths.peoples, peopleRoutes);
+        this.app.use(this.apiPaths.teacher, teacherRoutes);
 
     }
 
