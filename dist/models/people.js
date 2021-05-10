@@ -5,12 +5,12 @@ const mongoose_1 = require("mongoose");
 const peopleSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     lastname: { type: String, required: true },
-    birthday: { type: Date, required: true },
+    birthday: { type: Date, required: false },
     gender: { type: String, required: true },
     email: { type: String, required: true },
     ubigeo: { type: String, required: true },
     address: { type: String, required: true },
-    documentType: { type: String, required: true, unique: true },
+    documentType: { type: String, required: true },
     documentNumber: { type: String, required: true, unique: true },
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true, versionKey: false });
