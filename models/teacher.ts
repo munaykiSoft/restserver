@@ -4,7 +4,7 @@ const teacherSchema = new Schema({
     idPeople: { type: Schema.Types.ObjectId, ref: 'People'},
     people: {
         name: String,
-        lastName: String,
+        lastname: String,
         documentNumber: String
     },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User'},

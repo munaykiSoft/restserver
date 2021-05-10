@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.postTeacher = exports.getTeacher = void 0;
 const teacher_1 = require("../models/teacher");
+const people_1 = require("../models/people");
 const getTeacher = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const teachers = yield teacher_1.Teacher.find({}).populate('idPeople', '-createdAt -updatedAt'); //funcion populate: funcion para poblar
@@ -25,8 +26,21 @@ const getTeacher = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.getTeacher = getTeacher;
 const postTeacher = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { documentNumber } = req.body;
     try {
+        const peopleDB = yield people_1.People.findOne({ documentNumber });
+        if (peopleDB) {
+            const teacher = new teacher_1.Teacher(req.body);
+            teacher.idPeople = peopleDB._id;
+            teacher.people = peopleDB;
+            teacher.save();
+            return res.json(teacher);
+        }
+        const people = new people_1.People(req.body);
+        yield people.save();
         const teacher = new teacher_1.Teacher(req.body);
+        teacher.idPeople = people._id;
+        teacher.people = people;
         yield teacher.save();
         res.json(teacher);
     }

@@ -6,7 +6,7 @@ const teacherSchema = new mongoose_1.Schema({
     idPeople: { type: mongoose_1.Schema.Types.ObjectId, ref: 'People' },
     people: {
         name: String,
-        lastName: String,
+        lastname: String,
         documentNumber: String
     },
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
