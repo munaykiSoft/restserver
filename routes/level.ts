@@ -3,14 +3,14 @@
 */
 
 import { Router } from 'express';
-import { getLevel, postLevel, getLevels, putLevel } from '../controllers/level';
+import { getLevel, getLevels, postLevel, putLevel } from '../controllers/level';
 
 
 const router = Router ();
 
 router.get('/', getLevels);
-router.post('/new', postLevel);
 router.get('/:id', getLevel);
+router.post('/new', postLevel);
 router.put('/:id', putLevel);
 
 

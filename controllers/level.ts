@@ -37,6 +37,7 @@ export const getLevel = async (req: Request, res: Response) => {
     }
 }
 
+
 export const postLevel = async (req: Request, res: Response) => {
     const { body } = req;
     try {
@@ -73,4 +74,5 @@ export const putLevel = async (req: Request, res: Response) => {
         })
     }
 }
+
 

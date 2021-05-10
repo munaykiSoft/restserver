@@ -3,20 +3,38 @@ import { People } from '../models/people';
 
 
 
-export const getPeople =  async(req: Request, res: Response) => {
-
+export const getPeoples = async (req: Request, res: Response) => {
     try {
         const peoples = await People.find({});
-        res.json(peoples)
+        res.json(peoples);
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: 'get API - controller',
-        });
-        
+            // ok: false,
+            msg: 'Hable con el administrador'
+        })
     }
+}
 
+export const getPeople = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        const people = await People.findById(id);
+        if (!people) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'No existe un grado con el id'
+            })
+        }
 
+        res.json(people);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            // ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
 }
 
 
@@ -29,10 +47,30 @@ export const postPeople = async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            ok: false,
+            // ok: false,
             msg: 'Hable con el administrador'
         })
     }
 }
 
+export const putPeople = async(req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        const peopleDB = await People.findById(id);
+        if (!peopleDB) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'No existe la persona con el id'
+            })
+        }
 
+        const people = await People.findByIdAndUpdate(id, req.body, { new: true });
+        res.json(people);
+    } catch (error) {
+        console.error();
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
+}

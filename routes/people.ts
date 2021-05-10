@@ -3,19 +3,15 @@
 */
 
 import { Router } from 'express';
-import { getPeople, postPeople } from '../controllers/people';
+import { getPeoples, getPeople, postPeople, putPeople} from '../controllers/people';
 
 
 const router = Router ();
 
-router.get('/', getPeople);
+router.get('/', getPeoples);
+router.get('/:id', getPeople);
 router.post('/new', postPeople);
-
-
-
-
-
-
+router.put('/:id', putPeople);
 
 
 export default router;

@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postPeople = exports.getPeople = void 0;
+exports.putPeople = exports.postPeople = exports.getPeople = exports.getPeoples = void 0;
 const people_1 = require("../models/people");
-const getPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getPeoples = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const peoples = yield people_1.People.find({});
         res.json(peoples);
@@ -19,7 +19,29 @@ const getPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: 'get API - controller',
+            // ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+});
+exports.getPeoples = getPeoples;
+const getPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const people = yield people_1.People.findById(id);
+        if (!people) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'No existe un grado con el id'
+            });
+        }
+        res.json(people);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            // ok: false,
+            msg: 'Hable con el administrador'
         });
     }
 });
@@ -34,10 +56,32 @@ const postPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     catch (error) {
         console.log(error);
         res.status(500).json({
-            ok: false,
+            // ok: false,
             msg: 'Hable con el administrador'
         });
     }
 });
 exports.postPeople = postPeople;
+const putPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const peopleDB = yield people_1.People.findById(id);
+        if (!peopleDB) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'No existe la persona con el id'
+            });
+        }
+        const people = yield people_1.People.findByIdAndUpdate(id, req.body, { new: true });
+        res.json(people);
+    }
+    catch (error) {
+        console.error();
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        });
+    }
+});
+exports.putPeople = putPeople;
 //# sourceMappingURL=people.js.map
