@@ -12,3 +12,5 @@ export const getModule =  (req: Request, res: Response) => {
         msg: 'get API - controller',
     });
 }
+
+
