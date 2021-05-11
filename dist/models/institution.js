@@ -9,9 +9,9 @@ const institutionSchema = new mongoose_1.Schema({
     image: { type: String },
     address: { type: String },
     ubigeo: { type: String },
-    category: { type: String, required: true, enum: ['primaria', 'secundaria'] },
+    // category: { type: String, required: true, enum: ['primaria', 'secundaria'] },
     updateAt: { type: Date },
     createdAt: { type: Date, default: Date.now },
-});
+}, { timestamps: true, versionKey: false });
 exports.Institution = mongoose_1.model('Institution', institutionSchema);
 //# sourceMappingURL=institution.js.map

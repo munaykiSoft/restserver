@@ -7,10 +7,10 @@ const institutionSchema = new Schema({
     image: { type: String },
     address: { type: String },
     ubigeo: { type: String },
-    category: { type: String, required: true, enum: ['primaria', 'secundaria'] },
+    // category: { type: String, required: true, enum: ['primaria', 'secundaria'] },
     updateAt: { type: Date },
     createdAt: { type: Date, default: Date.now },
-});
+},{ timestamps: true, versionKey: false  });
 
 
 interface IInstitution extends Document {

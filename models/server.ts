@@ -6,6 +6,7 @@ import levelRoutes from '../routes/level';
 import peopleRoutes from '../routes/people';
 import teacherRoutes from '../routes/teacher';
 import sectionRoutes from '../routes/section';
+import institutionRoutes from '../routes/institution';
 
 
 
@@ -17,7 +18,9 @@ class Server {
         levels: '/api/levels',
         peoples: '/api/peoples',
         teacher: '/api/teachers',
-        section: '/api/sections'
+        section: '/api/sections',
+        institution: '/api/institutions'
+
         
     }
 
@@ -42,6 +45,7 @@ class Server {
         this.app.use(this.apiPaths.peoples, peopleRoutes);
         this.app.use(this.apiPaths.teacher, teacherRoutes);
         this.app.use(this.apiPaths.section, sectionRoutes);
+        this.app.use(this.apiPaths.institution, institutionRoutes);
 
     }
 
