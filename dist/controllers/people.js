@@ -40,7 +40,7 @@ const getPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         console.log(error);
         res.status(500).json({
-            // ok: false,
+            ok: false,
             msg: 'Hable con el administrador'
         });
     }
@@ -56,7 +56,7 @@ const postPeople = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     catch (error) {
         console.log(error);
         res.status(500).json({
-            // ok: false,
+            ok: false,
             msg: 'Hable con el administrador'
         });
     }

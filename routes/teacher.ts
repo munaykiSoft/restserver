@@ -1,15 +1,17 @@
 /*
-* api/users
+* api/teachers
 */
 
 import { Router } from 'express';
-import { getTeacher, postTeacher } from '../controllers/teacher';
+import { getTeachers, postTeacher, putTeacher, getTeacher } from '../controllers/teacher';
 
 
 const router = Router ();
 
-router.get('/', getTeacher);
+router.get('/', getTeachers);
+router.get('/:id', getTeacher)
 router.post('/new', postTeacher);
+router.put('/:id', putTeacher);
 
 
 export default router;

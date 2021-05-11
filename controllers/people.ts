@@ -31,7 +31,7 @@ export const getPeople = async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            // ok: false,
+            ok: false,
             msg: 'Hable con el administrador'
         })
     }
@@ -47,7 +47,7 @@ export const postPeople = async (req: Request, res: Response) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            // ok: false,
+            ok: false,
             msg: 'Hable con el administrador'
         })
     }
