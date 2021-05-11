@@ -1,11 +1,19 @@
 /*
-* api/users
+* api/sections
 */
 
 import { Router } from 'express';
-import { getSection } from '../controllers/section';
+import { getSections, getSection, postSection, putSection } from '../controllers/section';
 
 
 const router = Router ();
 
-router.get('/', getSection);
+router.get('/', getSections);
+router.get('/:id', getSection);
+router.post('/new', postSection);
+router.put('/:id', putSection);
+
+
+
+
+export default router;
