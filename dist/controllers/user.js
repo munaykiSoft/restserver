@@ -8,9 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.postUser = exports.getUser = void 0;
 const user_1 = require("../models/user");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const getUser = (req, res) => {
     console.log('hola mundo');
     // const { nombre = 'No name' } = req.query;
@@ -20,9 +24,18 @@ const getUser = (req, res) => {
 };
 exports.getUser = getUser;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const { body } = req;
+    const { password, username } = req.body;
     try {
+        const userDB = yield user_1.User.findOne({ username });
+        if (userDB) {
+            return res.status(400).json({
+                msg: 'Ya se encuentra registrado el usuario'
+            });
+        }
         const user = new user_1.User(req.body);
+        // Encriptar password
+        const salt = bcrypt_1.default.genSaltSync();
+        user.password = bcrypt_1.default.hashSync(password, salt);
         yield user.save();
         res.json(user);
     }
@@ -30,7 +43,7 @@ const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
         res.status(500).json({
             ok: false,
-            msg: 'Error inesperado...'
+            msg: 'Hable con el admin :v'
         });
     }
 });

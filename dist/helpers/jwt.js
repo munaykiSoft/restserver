@@ -7,9 +7,7 @@ exports.generateJWT = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const generateJWT = (uid) => {
     return new Promise((resolve, reject) => {
-        const payload = {
-            uid
-        };
+        const payload = { uid };
         jsonwebtoken_1.default.sign(payload, process.env.JWT_SECRET || 'Qdqwerwq32asdqa34ewadf3443t', { expiresIn: '12h' }, (err, token) => {
             if (err) {
                 reject('No se pudo generar JWT');
