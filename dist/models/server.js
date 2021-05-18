@@ -12,6 +12,7 @@ const people_1 = __importDefault(require("../routes/people"));
 const teacher_1 = __importDefault(require("../routes/teacher"));
 const section_1 = __importDefault(require("../routes/section"));
 const institution_1 = __importDefault(require("../routes/institution"));
+const auth_1 = __importDefault(require("../routes/auth"));
 class Server {
     constructor() {
         this.apiPaths = {
@@ -20,7 +21,8 @@ class Server {
             peoples: '/api/peoples',
             teacher: '/api/teachers',
             section: '/api/sections',
-            institution: '/api/institutions'
+            institution: '/api/institutions',
+            auth: '/api/login',
         };
         this.app = express_1.default();
         this.port = process.env.PORT || '7000';
@@ -40,6 +42,7 @@ class Server {
         this.app.use(this.apiPaths.teacher, teacher_1.default);
         this.app.use(this.apiPaths.section, section_1.default);
         this.app.use(this.apiPaths.institution, institution_1.default);
+        this.app.use(this.apiPaths.auth, auth_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

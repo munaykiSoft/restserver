@@ -7,6 +7,7 @@ import peopleRoutes from '../routes/people';
 import teacherRoutes from '../routes/teacher';
 import sectionRoutes from '../routes/section';
 import institutionRoutes from '../routes/institution';
+import authRoutes from '../routes/auth';
 
 
 
@@ -19,7 +20,8 @@ class Server {
         peoples: '/api/peoples',
         teacher: '/api/teachers',
         section: '/api/sections',
-        institution: '/api/institutions'
+        institution: '/api/institutions',
+        auth: '/api/login',
 
         
     }
@@ -46,6 +48,7 @@ class Server {
         this.app.use(this.apiPaths.teacher, teacherRoutes);
         this.app.use(this.apiPaths.section, sectionRoutes);
         this.app.use(this.apiPaths.institution, institutionRoutes);
+        this.app.use(this.apiPaths.auth, authRoutes);
 
     }
 

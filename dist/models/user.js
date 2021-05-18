@@ -18,8 +18,8 @@ const userSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
     image: { type: String },
     role: { type: String, required: true, default: 'USER' },
-    idTeacher: { type: String },
-    idStudent: { type: String },
+    idTeacher: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Teacher' },
+    idStudent: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Student' },
     people: {
         name: String,
         lastname: String,

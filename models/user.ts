@@ -5,8 +5,8 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     image: { type: String },
     role: { type: String, required: true, default: 'USER' },
-    idTeacher: { type: String },
-    idStudent: { type: String },
+    idTeacher: { type: Schema.Types.ObjectId, ref: 'Teacher' },
+    idStudent: { type: Schema.Types.ObjectId, ref: 'Student'},
     people: {
         name: String,
         lastname: String,
