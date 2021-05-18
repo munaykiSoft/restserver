@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { Course } from '../models/course';
 
 
 
-export const getCourse =  (req: Request, res: Response) => {
+
+export const getAuth =  (req: Request, res: Response) => {
 
     console.log('hola mundo');
     // const { nombre = 'No name' } = req.query;
@@ -12,5 +12,3 @@ export const getCourse =  (req: Request, res: Response) => {
         msg: 'get API - controller',
     });
 }
-
-
