@@ -1,8 +1,8 @@
 import { Schema, model, Document } from 'mongoose';
 
 const peopleSchema = new Schema({
-    name: { type: String, required: true }, //Matematicas
-    lastname: { type: String, required: true }, //Matematicas
+    name: { type: String, required: true }, 
+    lastname: { type: String, required: true },
     birthday: { type: Date, required: false },
     gender: { type: String, required: true },
     email: { type: String, required: true },
@@ -10,6 +10,7 @@ const peopleSchema = new Schema({
     address: { type: String, required: true },
     documentType: { type: String, required: true },
     documentNumber: { type: String, required: true, unique: true },
+    position: { type: String, required: true, default: 'student' },
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User'},
 },{ timestamps: true, versionKey: false  });
 
@@ -24,6 +25,7 @@ interface IPeople extends Document {
     address: string;
     documentType: string;
     documentNumber: string;
+    position: string;
     updatedBy: string;
 }
 

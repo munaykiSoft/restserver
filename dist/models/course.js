@@ -6,8 +6,9 @@ const courseSchema = new mongoose_1.Schema({
     name: { type: String, unique: true, required: true, lowercase: true },
     description: { type: String },
     image: { type: String },
-    teachers: [{ idTeacher: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Teacher' } }],
-    modules: [{ idModule: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Module' } }],
+    teachers: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'People' }],
+    students: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'People' }],
+    modules: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'Module' }],
     idLevel: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Level' },
     idSection: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Section' },
 }, { timestamps: true, versionKey: false });

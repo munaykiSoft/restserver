@@ -12,6 +12,7 @@ const peopleSchema = new mongoose_1.Schema({
     address: { type: String, required: true },
     documentType: { type: String, required: true },
     documentNumber: { type: String, required: true, unique: true },
+    position: { type: String, required: true, default: 'student' },
     updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true, versionKey: false });
 exports.People = mongoose_1.model('People', peopleSchema);

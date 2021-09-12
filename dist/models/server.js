@@ -9,7 +9,6 @@ const connection_1 = __importDefault(require("../db/connection"));
 const user_1 = __importDefault(require("../routes/user"));
 const level_1 = __importDefault(require("../routes/level"));
 const people_1 = __importDefault(require("../routes/people"));
-const teacher_1 = __importDefault(require("../routes/teacher"));
 const section_1 = __importDefault(require("../routes/section"));
 const institution_1 = __importDefault(require("../routes/institution"));
 const auth_1 = __importDefault(require("../routes/auth"));
@@ -19,7 +18,6 @@ class Server {
             users: '/api/users',
             levels: '/api/levels',
             peoples: '/api/peoples',
-            teacher: '/api/teachers',
             section: '/api/sections',
             institution: '/api/institutions',
             auth: '/api/login',
@@ -39,7 +37,6 @@ class Server {
         this.app.use(this.apiPaths.users, user_1.default);
         this.app.use(this.apiPaths.levels, level_1.default);
         this.app.use(this.apiPaths.peoples, people_1.default);
-        this.app.use(this.apiPaths.teacher, teacher_1.default);
         this.app.use(this.apiPaths.section, section_1.default);
         this.app.use(this.apiPaths.institution, institution_1.default);
         this.app.use(this.apiPaths.auth, auth_1.default);

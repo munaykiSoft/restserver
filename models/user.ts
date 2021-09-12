@@ -5,14 +5,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     image: { type: String },
     role: { type: String, required: true, default: 'USER' },
-    idTeacher: { type: Schema.Types.ObjectId, ref: 'Teacher' },
-    idStudent: { type: Schema.Types.ObjectId, ref: 'Student'},
-    people: {
-        name: String,
-        lastname: String,
-        dni: String,
-        email: String
-    },
+    people: { type: Schema.Types.ObjectId, ref: 'People' },
     status: { type: Boolean, default: true },
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
