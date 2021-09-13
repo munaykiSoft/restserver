@@ -7,8 +7,8 @@ const courseSchema = new Schema({
     teachers: [{ type: Schema.Types.ObjectId, ref: 'People' }],
     students: [{ type: Schema.Types.ObjectId, ref: 'People' }],
     modules: [{ type: Schema.Types.ObjectId, ref: 'Module' }],
-    idLevel: { type: Schema.Types.ObjectId, ref: 'Level' },
-    idSection: { type: Schema.Types.ObjectId, ref: 'Section' },
+    // idLevel: { type: Schema.Types.ObjectId, ref: 'Level' },
+    // idSection: { type: Schema.Types.ObjectId, ref: 'Section' },
 },{ timestamps: true, versionKey: false  });
 
 
@@ -19,8 +19,8 @@ interface ICourse extends Document {
     teachers: string;
     students: string;
     modules: string;
-    idLevel: string;
-    idSection: any;
+    // idLevel: string;
+    // idSection: any;
 }
 
 export const Course = model<ICourse>('Course', courseSchema);

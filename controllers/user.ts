@@ -3,14 +3,17 @@ import { User } from '../models/user';
 import bcrypt from 'bcrypt'
 
 
-export const getUser =  (req: Request, res: Response) => {
-
-    console.log('hola mundo');
-    // const { nombre = 'No name' } = req.query;
-
-    res.json({
-        msg: 'get API - controller',
-    });
+export const getUser =  async(req: any, res: Response) => {
+    try {
+        const user = await User.findById(req.uid).populate('people');
+        res.json(user);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin :v'
+        })
+    }
 }
 
 

@@ -15,13 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.postUser = exports.getUser = void 0;
 const user_1 = require("../models/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const getUser = (req, res) => {
-    console.log('hola mundo');
-    // const { nombre = 'No name' } = req.query;
-    res.json({
-        msg: 'get API - controller',
-    });
-};
+const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield user_1.User.findById(req.uid).populate('people');
+        res.json(user);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin :v'
+        });
+    }
+});
 exports.getUser = getUser;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { password, username } = req.body;
