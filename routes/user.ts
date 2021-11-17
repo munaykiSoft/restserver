@@ -3,14 +3,14 @@
  */
 
 import { Router } from "express";
-import { postUser, getUser } from '../controllers/user';
+import { postUser, get, all } from '../controllers/user';
 
 
 
 const router = Router();
 
-router.get('/', getUser);
-
+router.get('/', all);
+router.get('/:id', get);
 // router.put('/:id', userPut);
 
 router.post('/', postUser);

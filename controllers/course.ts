@@ -13,4 +13,21 @@ export const getCourse =  (req: Request, res: Response) => {
     });
 }
 
+export const postCourse = async(req: Request, res: Response) => {
+    const { body } = req;
+    console.log(body);
+    try {
+        const course = new Course(body);
+        await course.save();
+        res.json(course);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin :v'
+        })
+    }
+}
+
+
 

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const dbcnn = process.env.DB_CNN || 'mongodb+srv://visita:t7CNJsBhk3sXSAf3@cluster0.8pdxp.mongodb.net/escueladb?retryWrites=true&w=majority';
+const dbcnn = process.env.DB_CNN || 'mongodb://localhost:27017/escueladb';
 const dbConnection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose_1.default.connect(dbcnn, {

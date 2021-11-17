@@ -8,16 +8,57 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postUser = exports.getUser = void 0;
+exports.postUser = exports.get = exports.all = void 0;
 const user_1 = require("../models/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const all = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { q } = req.query;
+    const regex = new RegExp(q, 'i');
+    const pageSize = +req.query.pagesize;
+    const currentPage = +req.query.page;
     try {
-        const user = yield user_1.User.findById(req.uid).populate('people');
+        const [users, total] = yield Promise.all([
+            user_1.User.find({ status: true })
+                .or([{ 'name': regex }, { 'lastname': regex }, { 'cedula': regex }])
+                .skip(pageSize * (currentPage - 1))
+                .limit(pageSize)
+                .sort({ _id: -1 }),
+            user_1.User.countDocuments({ status: true })
+                .or([{ 'name': regex }, { 'lastname': regex }, { 'cedula': regex }])
+        ]);
+        console.log('hhhhhhhhhhhhh', total);
+        res.json({
+            users,
+            total,
+            pageSize
+        });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Hable con el administrador',
+        });
+    }
+});
+exports.all = all;
+const get = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield user_1.User.findById(req.uid);
         res.json(user);
     }
     catch (error) {
@@ -28,9 +69,10 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
-exports.getUser = getUser;
+exports.get = get;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { password, username } = req.body;
+    const _a = req.body, { password, username } = _a, body = __rest(_a, ["password", "username"]);
+    console.log(Object.assign({ password, username }, body));
     try {
         const userDB = yield user_1.User.findOne({ username });
         if (userDB) {

@@ -17,9 +17,9 @@ const user_1 = require("../models/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jwt_1 = require("../helpers/jwt");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { username, password } = req.body;
+    const { cedula, password } = req.body;
     try {
-        const userDB = yield user_1.User.findOne({ username });
+        const userDB = yield user_1.User.findOne({ cedula });
         if (!userDB) {
             return res.status(404).json({
                 ok: false,

@@ -14,14 +14,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const mongoose_1 = require("mongoose");
 const userSchema = new mongoose_1.Schema({
-    username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     image: { type: String },
-    role: { type: String, required: true, default: 'USER' },
-    people: { type: mongoose_1.Schema.Types.ObjectId, ref: 'People' },
+    role: { type: String, required: false, default: 'STUDENT' },
     status: { type: Boolean, default: true },
     token: { type: String, required: false },
     expiration: { type: Date, required: false },
+    // Datos personales
+    name: { type: String, required: true },
+    lastname: { type: String, required: true },
+    birthday: { type: Date, required: false },
+    gender: { type: String, required: false },
+    email: { type: String, required: false },
+    department: { type: String, required: false },
+    province: { type: String, required: false },
+    district: { type: String, required: false },
+    address: { type: String, required: false },
+    cedula: { type: String, required: false, unique: true },
+    updatedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User' },
 }, { timestamps: true, versionKey: false });
 userSchema.methods.toJSON = function () {
     let user = this;

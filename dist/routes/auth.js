@@ -9,6 +9,6 @@ const validate_jwt_1 = require("../middlewares/validate-jwt");
 const user_1 = require("../controllers/user");
 const router = express_1.Router();
 router.post('/', auth_1.login);
-router.get('/info', [validate_jwt_1.validateJWT, user_1.getUser]);
+router.get('/info', [validate_jwt_1.validateJWT, user_1.get]);
 exports.default = router;
 //# sourceMappingURL=auth.js.map

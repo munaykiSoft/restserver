@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const dbcnn: string = process.env.DB_CNN || 'mongodb+srv://visita:t7CNJsBhk3sXSAf3@cluster0.8pdxp.mongodb.net/escueladb?retryWrites=true&w=majority';
+const dbcnn: string = process.env.DB_CNN || 'mongodb://localhost:27017/escueladb';
 const dbConnection = async() => {
     try {
         await mongoose.connect( dbcnn, {

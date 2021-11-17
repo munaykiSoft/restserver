@@ -7,9 +7,9 @@ import { generateJWT } from '../helpers/jwt';
 
 
 export const login =  async (req: Request, res: Response) => {
-    const  { username, password } = req.body;
+    const  { cedula, password } = req.body;
     try {
-        const userDB = await User.findOne({username});
+        const userDB = await User.findOne({cedula});
         if (!userDB) {
             return res.status(404).json({
                 ok: false,
