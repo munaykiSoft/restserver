@@ -34,9 +34,6 @@ class Server {
         this.app.use('*', cloudinaryConfig);
         this.app.use(express.json());
         this.app.use(express.static('public'));
-        this.app.use('*', (req: any, res: any) => {
-            res.sendFile(path.resolve('public/index.html'))
-        });
     }
 
     routes() {
@@ -44,6 +41,9 @@ class Server {
         this.app.use(this.apiPaths.auth, authRoutes);
         this.app.use(this.apiPaths.course, courseRoutes);
         this.app.use(this.apiPaths.image, imageRoutes);
+        this.app.use('*', (req: any, res: any) => {
+            res.sendFile(path.resolve('public/index.html'))
+        });
     }
 
 
