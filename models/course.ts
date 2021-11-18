@@ -1,9 +1,10 @@
 import { Schema, model, Document } from 'mongoose';
 
 const courseSchema = new Schema({
-    name: { type: String, unique: true, required: true, lowercase: true }, //Matematicas
+    name: { type: String, required: true }, //Matematicas
     description: { type: String },
-    image: { type: String },
+    image: { type: String , default: 'https://www.kenyons.com/wp-content/uploads/2017/04/default-image.jpg' },
+    publicId: { type: String },
     teachers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     modules: [{
@@ -12,6 +13,7 @@ const courseSchema = new Schema({
         description: { type: String },
         video: { type: String }
     }, { timestamps: true, versionKey: false  }],
+    status: { type: Boolean, default: true}
 },{ timestamps: true, versionKey: false  });
 
 
@@ -22,8 +24,6 @@ interface ICourse extends Document {
     teachers: string;
     students: string;
     modules: string;
-    // idLevel: string;
-    // idSection: any;
 }
 
 export const Course = model<ICourse>('Course', courseSchema);

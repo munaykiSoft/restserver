@@ -4,10 +4,9 @@ import bcrypt from 'bcrypt';
 import { generateJWT } from '../helpers/jwt';
 
 
-
-
 export const login =  async (req: Request, res: Response) => {
     const  { cedula, password } = req.body;
+    console.log('haaaaaaaa',cedula);
     try {
         const userDB = await User.findOne({cedula});
         if (!userDB) {

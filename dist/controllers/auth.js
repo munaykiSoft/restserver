@@ -18,6 +18,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jwt_1 = require("../helpers/jwt");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { cedula, password } = req.body;
+    console.log('haaaaaaaa', cedula);
     try {
         const userDB = yield user_1.User.findOne({ cedula });
         if (!userDB) {

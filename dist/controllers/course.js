@@ -9,19 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postCourse = exports.getCourse = void 0;
+exports.postImage = exports.postCourse = exports.all = void 0;
+const multer_1 = require("../middlewares/multer");
 const course_1 = require("../models/course");
-const getCourse = (req, res) => {
-    console.log('hola mundo');
-    // const { nombre = 'No name' } = req.query;
-    res.json({
-        msg: 'get API - controller',
-    });
-};
-exports.getCourse = getCourse;
+const all = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const courses = yield course_1.Course.find({});
+        res.json(courses);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin :v'
+        });
+    }
+});
+exports.all = all;
 const postCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
-    console.log(body);
     try {
         const course = new course_1.Course(body);
         yield course.save();
@@ -36,4 +42,12 @@ const postCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.postCourse = postCourse;
+const postImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const file = multer_1.dataUri(req).content;
+    }
+    catch (error) {
+    }
+});
+exports.postImage = postImage;
 //# sourceMappingURL=course.js.map

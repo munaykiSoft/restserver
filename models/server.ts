@@ -4,7 +4,8 @@ import dbConnection from '../db/connection';
 import userRoutes from '../routes/user';
 import authRoutes from '../routes/auth';
 import courseRoutes from '../routes/course';
-
+import imageRoutes from '../routes/image';
+import { cloudinaryConfig } from "../handlers/cloudinary";
 
 
 class Server {
@@ -12,6 +13,7 @@ class Server {
     private port: string;
     private apiPaths = {
         users: '/api/users',
+        image: '/api/image',
         institution: '/api/institutions',
         auth: '/api/login',
         course: '/api/courses'
@@ -28,6 +30,7 @@ class Server {
 
     middlwares() {
         this.app.use(cors());
+        this.app.use('*', cloudinaryConfig);
         this.app.use(express.json());
         this.app.use(express.static('public'));
     }
@@ -36,6 +39,7 @@ class Server {
         this.app.use(this.apiPaths.users, userRoutes);
         this.app.use(this.apiPaths.auth, authRoutes);
         this.app.use(this.apiPaths.course, courseRoutes);
+        this.app.use(this.apiPaths.image, imageRoutes);
     }
 
 

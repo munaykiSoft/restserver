@@ -3,12 +3,12 @@
 */
 
 import { Router } from 'express';
-import { getCourse, postCourse } from '../controllers/course';
+import { all, postCourse } from '../controllers/course';
 
 
 const router = Router ();
 
-router.get('/', getCourse);
+router.get('/', all);
 router.post('/', postCourse);
 
 export default router;
