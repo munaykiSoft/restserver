@@ -6,6 +6,7 @@ import authRoutes from '../routes/auth';
 import courseRoutes from '../routes/course';
 import imageRoutes from '../routes/image';
 import { cloudinaryConfig } from "../handlers/cloudinary";
+import path from 'path';
 
 
 class Server {
@@ -33,6 +34,9 @@ class Server {
         this.app.use('*', cloudinaryConfig);
         this.app.use(express.json());
         this.app.use(express.static('public'));
+        this.app.use('*', (req: any, res: any) => {
+            res.sendFile(path.resolve('public/index.html'))
+        });
     }
 
     routes() {
