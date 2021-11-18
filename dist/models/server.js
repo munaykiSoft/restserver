@@ -11,7 +11,6 @@ const auth_1 = __importDefault(require("../routes/auth"));
 const course_1 = __importDefault(require("../routes/course"));
 const image_1 = __importDefault(require("../routes/image"));
 const cloudinary_1 = require("../handlers/cloudinary");
-const path_1 = __importDefault(require("path"));
 class Server {
     constructor() {
         this.apiPaths = {
@@ -32,9 +31,6 @@ class Server {
         this.app.use('*', cloudinary_1.cloudinaryConfig);
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.static('public'));
-        this.app.use('*', (req, res) => {
-            res.sendFile(path_1.default.resolve('public/index.html'));
-        });
     }
     routes() {
         this.app.use(this.apiPaths.users, user_1.default);
