@@ -15,7 +15,7 @@ exports.User = void 0;
 const mongoose_1 = require("mongoose");
 const userSchema = new mongoose_1.Schema({
     password: { type: String, required: true },
-    image: { type: String },
+    image: { type: String, default: 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg' },
     role: { type: String, required: false, default: 'STUDENT' },
     status: { type: Boolean, default: true },
     token: { type: String, required: false },

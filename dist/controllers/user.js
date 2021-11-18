@@ -41,7 +41,6 @@ const all = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             user_1.User.countDocuments({ status: true })
                 .or([{ 'name': regex }, { 'lastname': regex }, { 'cedula': regex }])
         ]);
-        console.log('hhhhhhhhhhhhh', total);
         res.json({
             users,
             total,
@@ -71,10 +70,9 @@ const get = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.get = get;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const _a = req.body, { password, username } = _a, body = __rest(_a, ["password", "username"]);
-    console.log(Object.assign({ password, username }, body));
+    const _a = req.body, { password, cedula } = _a, body = __rest(_a, ["password", "cedula"]);
     try {
-        const userDB = yield user_1.User.findOne({ username });
+        const userDB = yield user_1.User.findOne({ cedula });
         if (userDB) {
             return res.status(400).json({
                 msg: 'Ya se encuentra registrado el usuario'

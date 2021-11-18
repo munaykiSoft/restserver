@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1637203821415,
+  "timestamp": 1637268146206,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,14 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
-        "/564.09ee70afb8b4841361b4.js",
+        "/664.4c5bc31a62cfbbde7065.js",
         "/favicon.ico",
         "/index.html",
-        "/main.c573f05e9b48e1a5a60e.js",
+        "/main.86c9495a0e66d109b32d.js",
         "/manifest.webmanifest",
         "/polyfills.e8ca9b4573a1f1bf1813.js",
-        "/runtime.563957ebdfb74b37c6e7.js",
-        "/styles.0b24b33cbe304e6af7bf.css"
+        "/runtime.e7c97ed000417abacff9.js",
+        "/styles.f5898e03354af6e468ad.css"
       ],
       "patterns": []
     },
@@ -65,16 +65,31 @@
         "/assets/images/personajes anuncios.png",
         "/assets/images/plata.png",
         "/assets/images/quijote01.png",
-        "/assets/images/razonamiento verval.png",
+        "/assets/images/razonamiento_verbal.png",
         "/assets/images/usuario.png",
         "/assets/js/razonamiento.js"
       ],
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "school-api",
+      "patterns": [
+        "https:\\/\\/api\\.yachachiykunallapanchispaq\\.com\\/api\\/[^/]*"
+      ],
+      "strategy": "performance",
+      "maxSize": 10000,
+      "maxAge": 36000000,
+      "timeoutMs": 5000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
   "hashTable": {
-    "/564.09ee70afb8b4841361b4.js": "126d887704098447fc4a07535d3ffa49c488727c",
+    "/664.4c5bc31a62cfbbde7065.js": "16cf12667662a0888383a6fe7f2fea187cad58f5",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -110,16 +125,16 @@
     "/assets/images/personajes anuncios.png": "2095a5cd4587084f3780035d8403de413000325d",
     "/assets/images/plata.png": "d84038ad2f7c671168fc3ced7b0309705cff915e",
     "/assets/images/quijote01.png": "4bb607db0ee47a03ab12754d8315fb636e8605b7",
-    "/assets/images/razonamiento verval.png": "a0b06181ebfac28769631f4f0606af71053cc24e",
+    "/assets/images/razonamiento_verbal.png": "a0b06181ebfac28769631f4f0606af71053cc24e",
     "/assets/images/usuario.png": "7c40c1a4c99e39a54ea0c6aeb43d015c97b1219c",
     "/assets/js/razonamiento.js": "3db6e2cd0958443de9c702bcbc143233ba182737",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "a8349e88781f353f2ec7f1885ffcb23e57c890b2",
-    "/main.c573f05e9b48e1a5a60e.js": "dd1171fea0a46f68e1c5515c7a47b9f598a33b4f",
+    "/index.html": "8b9cbcb74a6d29587320a5e81cee7d683bd8429f",
+    "/main.86c9495a0e66d109b32d.js": "a70a2df29acd49747b130a2a9cd671e46b59dfdf",
     "/manifest.webmanifest": "0525a045ed472918dea972e744b31758ac30393b",
     "/polyfills.e8ca9b4573a1f1bf1813.js": "50a9cd3a952259c5b29451c1e48d1028bcd5f760",
-    "/runtime.563957ebdfb74b37c6e7.js": "f40a19955256880496b5e13e9b5301a835ceb883",
-    "/styles.0b24b33cbe304e6af7bf.css": "7a3cf377e54e3b962954e34c08a2974aba482453"
+    "/runtime.e7c97ed000417abacff9.js": "be706cdb35ae20cbd96bd85cc5e89ba1965a0ae0",
+    "/styles.f5898e03354af6e468ad.css": "e1f80d6605e2392fe990e2adc3975f5637af0909"
   },
   "navigationUrls": [
     {

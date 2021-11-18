@@ -7,12 +7,15 @@ const courseSchema = new Schema({
     publicId: { type: String },
     teachers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    modules: [{
-        title: { type: String },
-        subtitle: { type: String },
-        description: { type: String },
-        video: { type: String }
-    }, { timestamps: true, versionKey: false  }],
+    sections: [{
+        name: { type: String },
+        modules: [{
+            title: { type: String },
+            subtitle: { type: String },
+            description: { type: String },
+            video: { type: String }
+        }, { timestamps: true, versionKey: false  }]
+    }],
     status: { type: Boolean, default: true}
 },{ timestamps: true, versionKey: false  });
 
@@ -23,7 +26,7 @@ interface ICourse extends Document {
     image: string;
     teachers: string;
     students: string;
-    modules: string;
+    sections: string;
 }
 
 export const Course = model<ICourse>('Course', courseSchema);

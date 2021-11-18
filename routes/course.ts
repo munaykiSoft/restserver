@@ -3,11 +3,12 @@
 */
 
 import { Router } from 'express';
-import { all, postCourse } from '../controllers/course';
+import { all, postCourse, get } from '../controllers/course';
 
 
 const router = Router ();
 
+router.get('/:id', get);
 router.get('/', all);
 router.post('/', postCourse);
 

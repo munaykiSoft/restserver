@@ -18,7 +18,6 @@ export const all =  async(req: any, res: Response) => {
             User.countDocuments({ status: true })
                 .or([{ 'name': regex }, { 'lastname': regex }, { 'cedula': regex }])
         ]);
-        console.log('hhhhhhhhhhhhh',total)
         res.json({
             users,
             total,
@@ -47,10 +46,9 @@ export const get =  async(req: any, res: Response) => {
 
 
 export const postUser = async(req: Request, res: Response) => {
-    const { password, username, ...body } = req.body;
-    console.log({ password, username, ...body })
+    const { password, cedula, ...body } = req.body;
     try {
-        const userDB = await User.findOne({username});
+        const userDB = await User.findOne({cedula});
         if (userDB) {
             return res.status(400).json({
                 msg: 'Ya se encuentra registrado el usuario'

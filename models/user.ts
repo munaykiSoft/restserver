@@ -2,7 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 const userSchema = new Schema({
     password: { type: String, required: true },
-    image: { type: String },
+    image: { type: String, default: 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg' },
     role: { type: String, required: false, default: 'STUDENT' },
     status: { type: Boolean, default: true },
     token: { type: String, required: false },

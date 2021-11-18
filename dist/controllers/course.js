@@ -9,9 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postImage = exports.postCourse = exports.all = void 0;
+exports.postImage = exports.postCourse = exports.all = exports.get = void 0;
 const multer_1 = require("../middlewares/multer");
 const course_1 = require("../models/course");
+const get = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const course = yield course_1.Course.findById({ _id: id }).populate('teachers');
+        res.json(course);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Hable con el admin :v'
+        });
+    }
+});
+exports.get = get;
 const all = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const courses = yield course_1.Course.find({});
