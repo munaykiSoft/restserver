@@ -12,13 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login = void 0;
+exports.revalidateToken = exports.login = void 0;
 const user_1 = require("../models/user");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jwt_1 = require("../helpers/jwt");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { cedula, password } = req.body;
-    console.log('haaaaaaaa', cedula);
     try {
         const userDB = yield user_1.User.findOne({ cedula });
         if (!userDB) {
@@ -38,7 +37,9 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = yield jwt_1.generateJWT(userDB._id);
         res.json({
             ok: true,
-            token
+            token,
+            uid: userDB.id,
+            name: `${userDB.name} ${userDB.lastname}`
         });
     }
     catch (error) {
@@ -49,4 +50,16 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.login = login;
+const revalidateToken = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { uid } = req;
+    const token = yield jwt_1.generateJWT(uid);
+    const userDB = yield user_1.User.findById(uid);
+    res.json({
+        ok: true,
+        token,
+        uid: userDB === null || userDB === void 0 ? void 0 : userDB.id,
+        name: `${userDB === null || userDB === void 0 ? void 0 : userDB.name} ${userDB === null || userDB === void 0 ? void 0 : userDB.lastname}`
+    });
+});
+exports.revalidateToken = revalidateToken;
 //# sourceMappingURL=auth.js.map

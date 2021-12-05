@@ -6,7 +6,6 @@ import { generateJWT } from '../helpers/jwt';
 
 export const login =  async (req: Request, res: Response) => {
     const  { cedula, password } = req.body;
-    console.log('haaaaaaaa',cedula);
     try {
         const userDB = await User.findOne({cedula});
         if (!userDB) {
@@ -27,7 +26,9 @@ export const login =  async (req: Request, res: Response) => {
         const token = await generateJWT(userDB._id);
         res.json({
             ok: true,
-            token
+            token,
+            uid: userDB.id,
+            name: `${userDB.name} ${userDB.lastname}`
         })
     } catch (error) {
         console.log(error);
@@ -35,4 +36,16 @@ export const login =  async (req: Request, res: Response) => {
             msg: 'Hable con el administrador',
         })
     }
+}
+
+export const revalidateToken = async(req:any, res: any) => {
+    const { uid } = req;
+    const token = await generateJWT( uid );
+    const userDB = await User.findById( uid );
+    res.json({
+        ok: true,
+        token,
+        uid: userDB?.id,
+        name: `${userDB?.name} ${userDB?.lastname}`
+    })
 }
