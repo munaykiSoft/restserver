@@ -4,12 +4,13 @@
 
 import { Router } from "express";
 import { postUser, get, all } from '../controllers/user';
+import { validateJWT } from "../middlewares/validate-jwt";
 
 
 
 const router = Router();
 
-router.get('/', all);
+router.get('/', validateJWT, all);
 router.get('/:id', get);
 // router.put('/:id', userPut);
 

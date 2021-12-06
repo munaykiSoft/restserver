@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 export const all =  async(req: any, res: Response) => {
     const { q } = req.query;
     const regex = new RegExp(q, 'i');
-    const pageSize = +req.query.pagesize;
+    const pageSize = +req.query.pagesize || 1000;
     const currentPage = +req.query.page;
     try {
         const [users, total] = await Promise.all([

@@ -29,7 +29,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const all = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { q } = req.query;
     const regex = new RegExp(q, 'i');
-    const pageSize = +req.query.pagesize;
+    const pageSize = +req.query.pagesize || 1000;
     const currentPage = +req.query.page;
     try {
         const [users, total] = yield Promise.all([

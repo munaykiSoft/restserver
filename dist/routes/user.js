@@ -5,8 +5,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const user_1 = require("../controllers/user");
+const validate_jwt_1 = require("../middlewares/validate-jwt");
 const router = express_1.Router();
-router.get('/', user_1.all);
+router.get('/', validate_jwt_1.validateJWT, user_1.all);
 router.get('/:id', user_1.get);
 // router.put('/:id', userPut);
 router.post('/', user_1.postUser);
